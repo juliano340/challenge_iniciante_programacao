@@ -11,23 +11,44 @@ function cript() {
 
 }
 
+function descript() {
+
+    let cripto = document.getElementById("mensagem").value;
+    if (cripto == "") {
+        alert("Por favor, digite um texto");
+        return;
+    }
+    
+
+    // Inverter as substituições
+    let textoOriginal = cripto
+        .replace(/enter/gi, "e")
+        .replace(/imes/gi, "i")
+        .replace(/ai/gi, "a")
+        .replace(/ober/gi, "o")
+        .replace(/ufat/gi, "u");
+
+    let result = document.getElementById("result");
+    result.innerHTML = "<p>" + textoOriginal + "</p>" + "<button id='copy' onclick='copy()'>Copiar</button>";
+}
+
+
 function copy() {
-    // Seleciona o elemento <p>
+    
     var elementoParaCopiar = document.getElementById('result').firstChild;
 
-    // Cria um elemento temporário para armazenar o texto
+    
     var inputTemporario = document.createElement('input');
     inputTemporario.setAttribute('value', elementoParaCopiar.innerText);
     document.body.appendChild(inputTemporario);
 
-    // Seleciona e copia o texto
+    
     inputTemporario.select();
     document.execCommand('copy');
 
-    // Remove o elemento input temporário
     document.body.removeChild(inputTemporario);
 
-    console.log('Texto copiado para a área de transferência.');
+    alert('Texto copiado para a área de transferência.');
 }
 
 
